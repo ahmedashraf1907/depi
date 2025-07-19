@@ -1,0 +1,15 @@
+---
+- name: install packages on servers
+  hosts: servers
+  become: True
+  tasks: 
+    - name: ensure vim on ubuntu
+      when: ansible_os_family == "Debian"
+      ansible.builtin.apt:
+       name: vim
+       state: present
+    - name: ensure vim on redhat
+      when: ansible_os_family == "RedHat"
+      ansible.builtin.dnf:
+       name: vim
+       state: present
