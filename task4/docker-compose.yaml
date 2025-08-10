@@ -1,0 +1,21 @@
+services:
+  flask-app:
+    build: .
+    ports:
+      - 5000:5000
+    networks:
+      - front-side
+      - back-side
+  nginx:
+    image: nginx
+    networks:
+      - front-side
+  mariadb:
+    image: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: 12345
+    networks:
+      - back-side
+networks: 
+  front-side:
+  back-side:
