@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: flask-dep
+  name: flask-dep
+  namespace: apps
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: flask-dep
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: flask-dep
+    spec:
+      containers:
+      - image: ahmedashrafmarey/ahmed:v2
+        name: ahmed
+        resources: {}
+status: {}
