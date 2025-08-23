@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  creationTimestamp: null
+  labels:
+    app: my-daemon
+  name: my-daemon
+spec:
+  selector:
+    matchLabels:
+      app: my-daemon
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: my-daemon
+    spec:
+      containers:
+      - image: bitnami/node-exporter:lates
+        name: node-exporter
+        resources: {}
+status: {}
