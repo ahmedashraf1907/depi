@@ -16,7 +16,7 @@ spec:
         app: my-daemon
     spec:
       containers:
-      - image: bitnami/node-exporter:lates
+      - image: bitnami/node-exporter:latest
         name: node-exporter
         resources: {}
 status: {}

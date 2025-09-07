@@ -1,0 +1,2 @@
+[servers]
+192.168.5.5 ansible_ssh_user=ahmed ansible_ssh_password=P@$$w0rd

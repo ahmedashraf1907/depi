@@ -1,0 +1,1 @@
+docker run -d  --name my_prometheus -p 5050:9090 -v /home/ahmed/Downloads/prometheus-3.5.0.linux-amd64:/etc/prometheus  -v prometheus-data:/prometheus prom/prometheus:latest 

@@ -1,0 +1,15 @@
+- name: Deploy Prometheus with Docker
+  hosts: servers
+  become: true
+  tasks:
+    - name: Run Prometheus container
+      community.docker.docker_container:
+        name: prometheus
+        image: prom/prometheus:latest
+        state: started
+        restart_policy: always
+        published_ports:
+          - "4040:9090"
+        volumes:
+          - /home/ahmed/Downloads/prometheus-3.5.0.linux-amd64/prometheus.yml:/etc/prometheus/prometheus.yml
+          - prometheus-data:/prometheus  
