@@ -1,0 +1,29 @@
+global:
+route:
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 3h
+  receiver: 'telegram'
+receivers:
+  -   name: telegram 
+      telegram_configs:
+      -  bot_token_file: /etc/alertmanager/telegram_token_file
+         chat_id: -4858203808
+         message: |-
+           {{ range .Alerts }}
+           *Alert:* {{ .Annotations.summary }}
+           *description:* {{ .Annotations.description }}
+           *Severity:* {{ .Labels.severity }}
+           *Instance:* {{ .Labels.instance }}
+           *Starts At:* {{ .StartsAt }}
+           {{ end }}
+           
+      email_configs:
+      -  smarthost: 'smtp.gmail.com:587'
+         auth_username: ashrsafahmed@gmail.com
+         auth_password: pqletmtpmebzcwhl
+         from: 'ashrsafahmed@gmail.com'
+         to: 'ashrsafahmed@gmail.com'
+         headers:
+          subject: 'Prometheus Mail Alerts'
