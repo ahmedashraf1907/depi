@@ -10,6 +10,7 @@ terraform {
     key    = "terrafrom.tfstate"
     region = "us-east-1"
     use_lockfile = true
+    profile = "terraform"
   }
 }
 provider "aws" {

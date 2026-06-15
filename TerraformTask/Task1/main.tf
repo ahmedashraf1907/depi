@@ -13,4 +13,8 @@ resource "aws_instance" "ec2" {
   subnet_id = aws_subnet.my_subnet.id
   ami = "ami-0fdfb4d987b63ae72"
   instance_type = "t3.micro"
+  provisioner "local-exec" {
+    command = "echo ${self.private_ip} > webserver_privateip.txt"
+    when = destroy
+  }
 }
